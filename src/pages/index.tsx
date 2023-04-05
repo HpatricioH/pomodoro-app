@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Menu from '../components/Menu/Menu'
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -13,16 +14,29 @@ export default function Home () {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="p-4">
-        <div className='flex justify-center items-center p-5'>
+      <main className="p-4 flex flex-col justify-center items-center">
+        <div className='p-5'>
           <Image
-                src="/images/logo.svg"
-                alt="Pomodoro Logo"
-                className='decoration-[#EFF1FA]'
-                width={150}
-                height={24}
-                priority
-              />
+            src="/images/logo.svg"
+            alt="Pomodoro Logo"
+            className='decoration-[#EFF1FA]'
+            width={150}
+            height={24}
+            priority
+          />
+        </div>
+
+        <Menu />
+
+        <div>
+          <Image
+            src="/images/icon-settings.svg"
+            alt="settings icon"
+            className='decoration-[#EFF1FA]'
+            width={20}
+            height={24}
+            priority
+          />
         </div>
       </main>
     </>
