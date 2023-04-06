@@ -18,6 +18,33 @@ module.exports = {
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
     'react/react-in-jsx-scope': 'off',
-    '@typescript-eslint/strict-boolean-expressions': 'off'
+    '@typescript-eslint/strict-boolean-expressions': 'off',
+    'import/no-restricted-paths': [
+      'error',
+      {
+        zones: [
+          {
+            target: './src/core',
+            from: './src/components'
+          },
+          {
+            target: './src/core',
+            from: './src/lib'
+          },
+          {
+            target: './src/core',
+            from: './src/pages'
+          },
+          {
+            target: './src/lib',
+            from: './src/pages'
+          },
+          {
+            target: './src/components',
+            from: './src/pages'
+          }
+        ]
+      }
+    ]
   }
 }
