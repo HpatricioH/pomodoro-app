@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Menu from '../components/Layout/Menu/Menu'
 import { Inter } from 'next/font/google'
 import Layout from '@/components/Layout/Layout'
+import Timer from '@/components/Timer/Timer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +17,7 @@ export default function Home () {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <p>timer</p>
+        <Timer/>
       </Layout>
     </>
   )

@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function Footer () {
   return (
-    <div className='flex justify-center items-center'>
+    <footer className='flex justify-center items-center'>
       <Image
         src="/images/icon-settings.svg"
         alt="settings icon"
@@ -11,6 +11,6 @@ export default function Footer () {
         height={24}
         priority
       />
-    </div>
+    </footer>
   )
 }
