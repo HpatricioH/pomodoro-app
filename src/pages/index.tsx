@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import Menu from '../components/Layout/Menu/Menu'
 import { Inter } from 'next/font/google'
 import Layout from '@/components/Layout/Layout'
 import Timer from '@/components/Timer/Timer'
@@ -17,7 +15,7 @@ export default function Home () {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Timer/>
+        <Timer time={85}/>
       </Layout>
     </>
   )
