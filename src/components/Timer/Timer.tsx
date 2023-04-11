@@ -7,7 +7,7 @@ interface TimerProps {
 
 export default function Timer ({ time }: TimerProps) {
   return (
-    <div className='relative w-[14rem] h-[14rem] bg-gradient-to-br from-[#161932] from-20% via-[#1E213F] to-[#212840] p-[0.8rem] rounded-full'>
+    <div className='relative w-[14rem] h-[14rem] bg-gradient-to-br shadow-2xl shadow-[#D7E0FF]/20 from-[#161932] from-20% via-[#1E213F] to-[#212840] p-[0.8rem] rounded-full'>
       <CircularProgressbar
         value={time}
         text={`${time}`}
@@ -21,7 +21,7 @@ export default function Timer ({ time }: TimerProps) {
           backgroundColor: '#161932'
         })}
       />
-      <h2 className='absolute bottom-[3.5rem] left-[4.6rem] text-[#D7E0FF] uppercase font-bold tracking-[0.5rem]'>pause</h2>
+      <h2 className='absolute bottom-[3.8rem] left-[4.8rem] text-[#D7E0FF] uppercase font-normal text-[0.8rem] tracking-[0.5rem]'>pause</h2>
     </div>
 
   )

@@ -1,3 +1,99 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* font kumbhSans */
+@font-face {
+  font-family: 'Kumbh Sans';
+  src: url('../../public/fonts/kumbh_sans/KumbhSans-Bold.woff2') format('woff2'),
+      url('../../public/fonts/kumbh_sans/KumbhSans-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kumbh Sans';
+  src: url('../../public/fonts/kumbh_sans/KumbhSans-Regular.woff2') format('woff2'),
+      url('../../public/fonts/kumbh_sans/KumbhSans-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kumbh Sans';
+  src: url('../../public/fonts/kumbh_sans/KumbhSans-ExtraBold.woff2') format('woff2'),
+      url('../../public/fonts/kumbh_sans/KumbhSans-ExtraBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kumbh Sans';
+  src: url('../../public/fonts/kumbh_sans/KumbhSans-SemiBold.woff2') format('woff2'),
+      url('../../public/fonts/kumbh_sans/KumbhSans-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* font Roboto */
+
+@font-face {
+  font-family: 'Roboto Slab';
+  src: url('../../public/fonts/Roboto_Slab/RobotoSlab-Bold.woff2') format('woff2'),
+      url('../../public/fonts/Roboto_Slab/RobotoSlab-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  src: url('../../public/fonts/Roboto_Slab/RobotoSlab-Regular.woff2') format('woff2'),
+      url('../../public/fonts/Roboto_Slab/RobotoSlab-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  src: url('../../public/fonts/Roboto_Slab/RobotoSlab-ExtraBold.woff2') format('woff2'),
+      url('../../public/fonts/Roboto_Slab/RobotoSlab-ExtraBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  src: url('../../public/fonts/Roboto_Slab/RobotoSlab-SemiBold.woff2') format('woff2'),
+      url('../../public/fonts/Roboto_Slab/RobotoSlab-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Space Mono */
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('../../public/fonts/Space_Mono/SpaceMono-Bold.woff2') format('woff2'),
+      url('../../public/fonts/Space_Mono/SpaceMono-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('../../public/fonts/Space_Mono/SpaceMono-Regular.woff2') format('woff2'),
+      url('../../public/fonts/Space_Mono/SpaceMono-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
