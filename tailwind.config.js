@@ -7,7 +7,13 @@ module.exports = {
     './src/**/*.{js,jsx,ts,tsx,vue}'
   ],
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        kumbh: ['Kumbh Sans', 'sans-serif'],
+        robotoSlab: ['Roboto Slab', 'serif'],
+        spaceMono: ['Space Mono', 'monospace']
+      }
+    }
   },
   variants: {
     extend: {}

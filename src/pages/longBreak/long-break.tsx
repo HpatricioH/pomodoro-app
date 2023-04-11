@@ -1,9 +1,10 @@
 import Layout from '@/components/Layout/Layout'
+import Timer from '@/components/Timer/Timer'
 
 export default function longbreak () {
   return (
     <Layout>
-      <p>Long Break</p>
+      <Timer time={25}/>
     </Layout>
   )
 }

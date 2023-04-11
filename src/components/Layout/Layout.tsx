@@ -10,7 +10,7 @@ export default function Layout ({ children, ...props }: Props) {
   return (
     <>
       <Header />
-        <main className="p-4 flex flex-col justify-center items-center">{children}</main>
+        <main className="p-4 flex flex-col justify-center items-center font-kumbh">{children}</main>
       <Footer />
     </>
   )
