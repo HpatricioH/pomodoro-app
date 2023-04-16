@@ -1,6 +1,14 @@
+import Settings from '@/components/Settings/Settings'
 import Image from 'next/image'
+import { useState } from 'react'
 
 export default function Footer () {
+  const [showModal, setShowModal] = useState<boolean>(false)
+
+  const handleModal = () => {
+    setShowModal(true)
+  }
+
   return (
     <footer className='flex justify-center items-center mt-[3.5rem]'>
       <Image
@@ -10,7 +18,9 @@ export default function Footer () {
         width={20}
         height={24}
         priority
+        onClick={handleModal}
       />
+      {showModal ? <Settings setShowModal={setShowModal}/> : null}
     </footer>
   )
 }
