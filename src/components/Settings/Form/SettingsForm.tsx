@@ -25,7 +25,7 @@ export default function SettingsForm () {
         <div className='relative flex'>
           <input
             type="number"
-            className='h-8 rounded-md border bg-[#EFF1FA] text-left pl-2 text-[#1E213F] font-bold w-[6rem]'
+            className='h-8 rounded-md border bg-[#EFF1FA] pl-2 text-[#1E213F] font-bold w-[6rem]'
             value={pomodoro}
             onChange={(e) => { handleChange(e, setPomodoro) }} />
           <Image
@@ -51,7 +51,7 @@ export default function SettingsForm () {
         <div className='relative flex'>
           <input
             type='number'
-            className='h-8 rounded-md border bg-[#EFF1FA] text-left pl-2 text-[#1E213F] font-bold w-[6rem]'
+            className='h-8 rounded-md border bg-[#EFF1FA] pl-2 text-[#1E213F] font-bold w-[6rem]'
             value={shortBreak}
             onChange={(e) => { handleChange(e, setShortBreak) }}
           />
@@ -78,7 +78,7 @@ export default function SettingsForm () {
         <div className='relative flex'>
           <input
             type='number'
-            className='h-8 rounded-md border bg-[#EFF1FA] text-left pl-2 text-[#1E213F] font-bold w-[6rem]'
+            className='h-8 rounded-md border bg-[#EFF1FA] pl-2 text-[#1E213F] font-bold w-[6rem]'
             value={longBreak}
             onChange={(e) => { handleChange(e, setLongBreak) }}
           />

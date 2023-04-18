@@ -1,4 +1,6 @@
+import useColor from '../../../lib/hooks/useColor'
 import { useState } from 'react'
+// import { type ColorContextProps } from '@/lib/context/ColorContext'
 
 const colorArray = [
   {
@@ -14,9 +16,11 @@ const colorArray = [
 
 export default function Color () {
   const [colorIndex, setColorIndex] = useState(null)
+  const { setColor } = useColor() as any
 
   const handleColorClick = (index: any) => {
     setColorIndex(index)
+    setColor(colorArray[index].name)
   }
 
   return (
