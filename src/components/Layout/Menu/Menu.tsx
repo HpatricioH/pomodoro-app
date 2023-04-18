@@ -16,7 +16,7 @@ export default function Menu () {
         href={'/'}
         className={
           router.pathname === '/'
-            ? `${color === '' ? 'bg-[#F87070]' : color} h-[3rem] flex justify-center items-center rounded-[4rem] w-[6rem] text-[#161932] font-bold`
+            ? `${color === '' ? 'bg-[#F87070]' : `bg-[${color}]`} h-[3rem] flex justify-center items-center rounded-[4rem] w-[6rem] text-[#161932] font-bold`
             : 'text-[#D7E0FF] font-bold'}>
         <p className='text-xs'>pomodoro</p>
       </Link>
@@ -25,7 +25,7 @@ export default function Menu () {
         href={'/shortBreak/short-break'}
         className={
           router.pathname === '/shortBreak/short-break'
-            ? `${color === '' ? 'bg-[#F87070]' : color} h-[3rem] flex justify-center items-center rounded-[4rem] w-[6rem] text-[#161932] font-bold`
+            ? `${color === '' ? 'bg-[#F87070]' : `bg-[${color}]`} h-[3rem] flex justify-center items-center rounded-[4rem] w-[6rem] text-[#161932] font-bold`
             : 'text-[#D7E0FF] font-bold'}>
         <p className='text-xs'>short break</p>
       </Link>
@@ -34,7 +34,7 @@ export default function Menu () {
         href={'/longBreak/long-break'}
         className={
           router.pathname === '/longBreak/long-break'
-            ? `${color === '' ? 'bg-[#F87070]' : color} h-[3rem] flex justify-center items-center rounded-[4rem] w-[6rem] text-[#161932] font-bold`
+            ? `${color === '' ? 'bg-[#F87070]' : `bg-[${color}]`} h-[3rem] flex justify-center items-center rounded-[4rem] w-[6rem] text-[#161932] font-bold`
             : 'text-[#D7E0FF] font-bold'}>
         <p className='text-xs'>long break</p>
       </Link>

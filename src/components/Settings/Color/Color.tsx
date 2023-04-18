@@ -4,13 +4,13 @@ import { useState } from 'react'
 
 const colorArray = [
   {
-    name: 'bg-[#F87070]'
+    name: '#F87070'
   },
   {
-    name: 'bg-[#70F3F8]'
+    name: '#70F3F8'
   },
   {
-    name: 'bg-[#D881F8]'
+    name: '#D881F8'
   }
 ]
 
@@ -31,7 +31,7 @@ export default function Color () {
           return (
             <div key={index} className='flex items-center '>
               <button
-                className={`rounded-full w-[3rem] h-[3rem] ${color.name}`}
+                className={`rounded-full w-[3rem] h-[3rem] bg-[${color.name}]`}
                 onClick={() => { handleColorClick(index) }}
               >
                 {colorIndex === index ? <p className='text-black'>✔️</p> : null}
