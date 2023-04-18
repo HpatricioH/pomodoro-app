@@ -1,3 +1,5 @@
+import { type ColorContextProps } from '@/lib/context/ColorContext'
+import useColor from '@/lib/hooks/useColor'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 
@@ -6,6 +8,8 @@ interface TimerProps {
 }
 
 export default function Timer ({ time }: TimerProps) {
+  const { color } = useColor() as ColorContextProps
+
   return (
     <div className='relative w-[14rem] h-[14rem] bg-gradient-to-br shadow-2xl shadow-[#D7E0FF]/20 from-[#161932] from-20% via-[#1E213F] to-[#212840] p-[0.8rem] rounded-full'>
       <CircularProgressbar
@@ -16,7 +20,7 @@ export default function Timer ({ time }: TimerProps) {
         strokeWidth={4}
         styles={buildStyles({
           textColor: '#D7E0FF',
-          pathColor: '#F87070',
+          pathColor: `${color === '' ? '#F87070' : color}`,
           trailColor: '#161932',
           backgroundColor: '#161932'
         })}

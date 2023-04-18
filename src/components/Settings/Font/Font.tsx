@@ -29,13 +29,14 @@ export default function Font () {
         {fontArray.map((font, index) => {
           return (
             <div key={index} className='flex items-center '>
-              <button
-                className={`rounded-full w-[3rem] h-[3rem] ${activeIndex === index
+              <input
+                type='button'
+                className={`rounded-full w-[3rem] h-[3rem] cursor-pointer text-center ${font.name} ${activeIndex === index
                   ? 'bg-[#161932] text-[#FFFFFF]'
                   : 'flex justify-center items-center  bg-[#EFF1FA] font-bold hover:border-4'} `}
+                value={font.text}
                 onClick={() => { handleClick(index) }}>
-                <p className={`font-bold text-[0.8rem] ${font.name}`}>{font.text}</p>
-              </button>
+              </input>
             </div>
           )
         })}
