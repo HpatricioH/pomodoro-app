@@ -1,3 +1,4 @@
+import useFont from '@/lib/hooks/useFont'
 import { useState } from 'react'
 
 const fontArray = [
@@ -17,9 +18,11 @@ const fontArray = [
 
 export default function Font () {
   const [activeIndex, setActiveIndex] = useState(null)
+  const { setFont } = useFont() as any
 
   const handleClick = (index: any) => {
     setActiveIndex(index)
+    setFont(fontArray[index].name)
   }
 
   return (

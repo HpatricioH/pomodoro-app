@@ -18,6 +18,7 @@ export default function SettingsForm () {
     setValue((prevValue: number) => prevValue - 1)
   }
 
+  // TODO: refactor this code to make it smaller and more readable. bring the color and font components here and make it as inputs.
   return (
     <form className='border-b'>
       <div className='flex justify-between w-full mb-[0.5rem]'>

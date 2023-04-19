@@ -4,7 +4,7 @@ import Menu from '../Menu/Menu'
 export default function Header () {
   return (
     <>
-      <header className='flex flex-col justify-center items-center p-5'>
+      <header className='flex flex-col justify-center items-center p-[1rem]'>
         <Image
           src="/images/logo.svg"
           alt="Pomodoro Logo"
