@@ -1,4 +1,5 @@
 import useColor from '@/lib/hooks/useColor'
+import useFont from '@/lib/hooks/useFont'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -6,12 +7,17 @@ interface Props {
   color: string
 }
 
+interface FontProps {
+  font: string
+}
+
 export default function Menu () {
   const router = useRouter()
   const { color } = useColor() as Props
+  const { font } = useFont() as FontProps
 
   return (
-    <div className='bg-[#161932] h-[4rem] w-[18rem] flex justify-center items-center gap-[1.3rem] rounded-[5rem]'>
+    <div className={`bg-[#161932] h-[4rem] w-[19rem] flex justify-between items-center rounded-[5rem] px-[1rem] ${font}`}>
       <Link
         href={'/'}
         className={
