@@ -2,7 +2,6 @@ import Image from 'next/image'
 import SettingsForm from './Form/SettingsForm'
 import Font from './Font/Font'
 import Color from './Color/Color'
-import Button from './Button/Button'
 
 interface SettingsProps {
   setShowModal: (value: boolean) => void
@@ -25,12 +24,11 @@ export default function Settings ({ setShowModal }: SettingsProps) {
       </div>
       <div className='flex flex-col p-4 w-full'>
         <h2 className='font-semibold text-center uppercase text-[0.8rem] tracking-[0.2rem] pb-[1rem]'>time ( minutes )</h2>
-        <SettingsForm />
+        <SettingsForm setShowModal={setShowModal}/>
         {/* {TODO: this Font, Color, and button should be moved to the SettingsForm and change buttons to inputs thus when the apply button is clicked everything should be sent} */}
         <Font/>
         <Color/>
       </div>
-      <Button/>
     </div>
   )
 }
