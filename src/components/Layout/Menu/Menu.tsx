@@ -1,15 +1,9 @@
+import { type ColorContextProps } from '@/lib/context/ColorContext'
+import { type FontContextProps } from '@/lib/context/FontContext'
 import useColor from '@/lib/hooks/useColor'
 import useFont from '@/lib/hooks/useFont'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-
-interface Props {
-  color: string
-}
-
-interface FontProps {
-  font: string
-}
 
 const menuArray = [
   {
@@ -28,8 +22,8 @@ const menuArray = [
 
 export default function Menu () {
   const router = useRouter()
-  const { color } = useColor() as Props
-  const { font } = useFont() as FontProps
+  const { color } = useColor() as ColorContextProps
+  const { font } = useFont() as FontContextProps
 
   // TODO: make the nav a <ul> and the links <li> elements.
   return (
