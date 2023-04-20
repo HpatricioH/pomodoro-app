@@ -1,15 +1,14 @@
 import Image from 'next/image'
-import { useState } from 'react'
 import Button from '../Button/Button'
+import useTime from '@/lib/hooks/useTime'
+import { type TimeContextProps } from '@/lib/context/TimeContext'
 
 interface SettingsFormProps {
   setShowModal: (value: boolean) => void
 }
 
 export default function SettingsForm ({ setShowModal }: SettingsFormProps) {
-  const [pomodoro, setPomodoro] = useState(25)
-  const [shortBreak, setShortBreak] = useState(5)
-  const [longBreak, setLongBreak] = useState(15)
+  const { pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak } = useTime() as TimeContextProps
 
   const formArray = [
     {
@@ -74,14 +73,14 @@ export default function SettingsForm ({ setShowModal }: SettingsFormProps) {
                     id={item.id}
                     className='h-8 rounded-md border bg-[#EFF1FA] pl-2 text-[#1E213F] font-bold w-[6rem]'
                     value={item.value}
-                    onChange={(e) => { handleChange(e, item.setValue) }} />
+                    onChange={(e) => { handleChange(e, item.setValue as any) }} />
                   <Image
                     src='/images/icon-arrow-up.svg'
                     alt='arrow up icon'
                     className='decoration-[#EFF1FA] absolute top-[0.5rem] place-self-center right-[0.5rem] cursor-pointer hover:decoration-[#1E213F]'
                     width={10}
                     height={10}
-                    onClick={() => { handleIncrease(item.setValue) }}
+                    onClick={() => { handleIncrease(item.setValue as any) }}
                   />
                   <Image
                     src='/images/icon-arrow-down.svg'
@@ -89,7 +88,7 @@ export default function SettingsForm ({ setShowModal }: SettingsFormProps) {
                     className='decoration-[#EFF1FA] absolute bottom-[0.5rem] place-self-center right-[0.5rem] cursor-pointer hover:decoration-[#1E213F]'
                     width={10}
                     height={10}
-                    onClick={() => { handleDecrease(item.setValue) }}
+                    onClick={() => { handleDecrease(item.setValue as any) }}
                   />
                 </div>
               </div>

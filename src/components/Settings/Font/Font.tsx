@@ -1,3 +1,4 @@
+import { type FontContextProps } from '@/lib/context/FontContext'
 import useFont from '@/lib/hooks/useFont'
 import { useState } from 'react'
 
@@ -18,7 +19,7 @@ const fontArray = [
 
 export default function Font () {
   const [activeIndex, setActiveIndex] = useState(null)
-  const { setFont } = useFont() as any
+  const { setFont } = useFont() as FontContextProps
 
   const handleClick = (index: any) => {
     setActiveIndex(index)

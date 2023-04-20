@@ -1,3 +1,4 @@
+import { type ColorContextProps } from '@/lib/context/ColorContext'
 import useColor from '../../../lib/hooks/useColor'
 import { useState } from 'react'
 // import { type ColorContextProps } from '@/lib/context/ColorContext'
@@ -19,7 +20,7 @@ const colorArray = [
 
 export default function Color () {
   const [colorIndex, setColorIndex] = useState(null)
-  const { setColor } = useColor() as any
+  const { setColor } = useColor() as ColorContextProps
 
   const handleColorClick = (index: any) => {
     setColorIndex(index)
