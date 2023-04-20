@@ -31,8 +31,9 @@ export default function Menu () {
   const { color } = useColor() as Props
   const { font } = useFont() as FontProps
 
+  // TODO: make the nav a <ul> and the links <li> elements.
   return (
-    <div className={`bg-[#161932] h-[4rem] w-[19rem] flex justify-between items-center rounded-[5rem] px-[1rem] ${font}`}>
+    <nav className={`bg-[#161932] h-[4rem] w-[19rem] flex justify-between items-center rounded-[5rem] px-[1rem] ${font}`}>
       {
         menuArray.map((link, index) => {
           return (
@@ -50,6 +51,6 @@ export default function Menu () {
           )
         })
       }
-    </div>
+    </nav>
   )
 }

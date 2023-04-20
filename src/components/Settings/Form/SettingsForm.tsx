@@ -1,7 +1,12 @@
 import Image from 'next/image'
 import { useState } from 'react'
+import Button from '../Button/Button'
 
-export default function SettingsForm () {
+interface SettingsFormProps {
+  setShowModal: (value: boolean) => void
+}
+
+export default function SettingsForm ({ setShowModal }: SettingsFormProps) {
   const [pomodoro, setPomodoro] = useState(25)
   const [shortBreak, setShortBreak] = useState(5)
   const [longBreak, setLongBreak] = useState(15)
@@ -10,17 +15,23 @@ export default function SettingsForm () {
     {
       label: 'pomodoro',
       value: pomodoro,
-      setValue: setPomodoro
+      setValue: setPomodoro,
+      name: 'pomodoro',
+      id: 'pomodoro'
     },
     {
       label: 'short break',
       value: shortBreak,
-      setValue: setShortBreak
+      setValue: setShortBreak,
+      name: 'shortBreak',
+      id: 'shortBreak'
     },
     {
       label: 'long break',
       value: longBreak,
-      setValue: setLongBreak
+      setValue: setLongBreak,
+      name: 'longBreak',
+      id: 'longBreak'
     }
   ]
 
@@ -36,9 +47,20 @@ export default function SettingsForm () {
     setValue((prevValue: number) => prevValue - 1)
   }
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const { pomodoro, shortBreak, longBreak } = Object.fromEntries(
+      new window.FormData(e.currentTarget).entries()
+    )
+
+    console.log(pomodoro, shortBreak, longBreak)
+    setShowModal(false)
+  }
+
   // TODO: bring the color and font components here and make it as inputs.
   return (
-    <form className='border-b'>
+    <form className='border-b flex flex-col justify-center items-center' onSubmit={handleSubmit}>
       <div className='flex flex-col justify-between w-full mb-[0.5rem]'>
         {
           formArray.map((item, index) => {
@@ -48,6 +70,8 @@ export default function SettingsForm () {
                 <div className='relative'>
                   <input
                     type="number"
+                    name={item.name}
+                    id={item.id}
                     className='h-8 rounded-md border bg-[#EFF1FA] pl-2 text-[#1E213F] font-bold w-[6rem]'
                     value={item.value}
                     onChange={(e) => { handleChange(e, item.setValue) }} />
@@ -73,6 +97,7 @@ export default function SettingsForm () {
           })
         }
       </div>
+      <Button/>
     </form>
   )
 }

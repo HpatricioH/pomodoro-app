@@ -5,7 +5,7 @@ import useFont from '@/lib/hooks/useFont'
 
 interface Props {
   children?: ReactNode
-  font: string
+  font?: string
 }
 
 export default function Layout ({ children, ...props }: Props) {
@@ -14,7 +14,7 @@ export default function Layout ({ children, ...props }: Props) {
   return (
     <>
       <Header />
-        <main className={`p-4 flex flex-col justify-center items-center ${font}`}>{children}</main>
+        <main className={`p-4 flex flex-col justify-center items-center ${font as string}`}>{children}</main>
       <Footer />
     </>
   )
