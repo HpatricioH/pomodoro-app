@@ -12,7 +12,7 @@ interface Props {
 export const FontContext = createContext<FontContextProps | null>(null)
 
 export const FontProvider = ({ children }: Props) => {
-  const [font, setFont] = useState('')
+  const [font, setFont] = useState('font-kumbh')
 
   const value = {
     font,
