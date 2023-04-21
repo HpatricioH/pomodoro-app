@@ -34,6 +34,7 @@ export default function SettingsForm ({ setShowModal }: SettingsFormProps) {
     }
   ]
 
+  // TODO: make this handles into a utils function and use it in this component
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>, setValue: React.Dispatch<React.SetStateAction<number>>) => {
     setValue(Number(e.target.value))
   }
@@ -57,7 +58,6 @@ export default function SettingsForm ({ setShowModal }: SettingsFormProps) {
     setShowModal(false)
   }
 
-  // TODO: bring the color and font components here and make it as inputs.
   return (
     <form className='border-b flex flex-col justify-center items-center' onSubmit={handleSubmit}>
       <div className='flex flex-col justify-between w-full mb-[0.5rem]'>

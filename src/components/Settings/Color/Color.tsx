@@ -19,8 +19,8 @@ const colorArray = [
 ]
 
 export default function Color () {
-  const [colorIndex, setColorIndex] = useState(null)
-  const { setColor } = useColor() as ColorContextProps
+  const { color, setColor } = useColor() as ColorContextProps
+  const [colorIndex, setColorIndex] = useState(colorArray.findIndex((item) => item.name === color))
 
   const handleColorClick = (index: any) => {
     setColorIndex(index)

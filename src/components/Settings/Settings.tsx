@@ -25,7 +25,7 @@ export default function Settings ({ setShowModal }: SettingsProps) {
       <div className='flex flex-col p-4 w-full'>
         <h2 className='font-semibold text-center uppercase text-[0.8rem] tracking-[0.2rem] pb-[1rem]'>time ( minutes )</h2>
         <SettingsForm setShowModal={setShowModal}/>
-        {/* {TODO: this Font, Color, and button should be moved to the SettingsForm and change buttons to inputs thus when the apply button is clicked everything should be sent} */}
+        {/* TODO: this Font, Color, and button should be moved to the SettingsForm and change buttons to inputs thus when the apply button is clicked everything should be sent */}
         <Font/>
         <Color/>
       </div>
