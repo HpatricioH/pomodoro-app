@@ -12,11 +12,11 @@ const menuArray = [
   },
   {
     name: 'short break',
-    path: '/shortBreak/short-break'
+    path: '/short-break'
   },
   {
     name: 'long break',
-    path: '/longBreak/long-break'
+    path: '/long-break'
   }
 ]
 

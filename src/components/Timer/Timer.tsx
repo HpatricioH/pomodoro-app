@@ -2,29 +2,59 @@ import { type ColorContextProps } from '@/lib/context/ColorContext'
 import { type TimeContextProps } from '@/lib/context/TimeContext'
 import useColor from '@/lib/hooks/useColor'
 import useTime from '@/lib/hooks/useTime'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
+import { useRouter } from 'next/router'
 import 'react-circular-progressbar/dist/styles.css'
 
-interface TimerProps {
-  time: number
-}
-
-export default function Timer ({ time }: TimerProps) {
+export default function Timer () {
   const { color } = useColor() as ColorContextProps
   const { pomodoro, shortBreak, longBreak } = useTime() as TimeContextProps
   const [mode, setMode] = useState<'pomodoro' | 'shortBreak' | 'longBreak'>('pomodoro')
   // const [status, setStatus] = useState<'stopped' | 'running' | 'paused'>('stopped')
   const [isPaused, setIsPaused] = useState(false)
   const [timeLeft, setTimeLeft] = useState(0)
+  const router = useRouter()
 
-  const initTimer = () => {
-    setTimeLeft(pomodoro * 60)
+  const secondsLeftRef = useRef(timeLeft)
+
+  const tick = () => {
+    secondsLeftRef.current = secondsLeftRef.current - 1
+    setTimeLeft(secondsLeftRef.current)
   }
 
   useEffect(() => {
+    const initTimer = () => {
+      if (router.pathname === '/') {
+        setMode('pomodoro')
+        setTimeLeft(pomodoro * 60)
+      } else if (router.pathname === '/short-break') {
+        setMode('shortBreak')
+        setTimeLeft(shortBreak * 60)
+      } else if (router.pathname === '/long-break') {
+        setMode('longBreak')
+        setTimeLeft(longBreak * 60)
+      }
+    }
+
+    const timer = setInterval(() => {
+      // if (secondsLeftRef.current > 0 && !isPaused) {
+      //   tick()
+      // } else if (secondsLeftRef.current === 0) {
+      //   clearInterval(timer)
+      //   if (mode === 'pomodoro') {
+      //     router.push('/short-break')
+      //   } else if (mode === 'shortBreak') {
+      //     router.push('/')
+      //   } else if (mode === 'longBreak') {
+      //     router.push('/')
+      //   }
+      // }
+      tick()
+    }, 1000)
+
     initTimer()
-  }, [pomodoro])
+  }, [pomodoro, shortBreak, longBreak, router.pathname])
 
   let totalSeconds = mode === 'pomodoro' ? pomodoro * 60 : shortBreak * 60
 

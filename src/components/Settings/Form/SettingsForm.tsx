@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Button from '../Button/Button'
 import useTime from '@/lib/hooks/useTime'
 import { type TimeContextProps } from '@/lib/context/TimeContext'
+import { useState } from 'react'
 
 interface SettingsFormProps {
   setShowModal: (value: boolean) => void
@@ -9,26 +10,29 @@ interface SettingsFormProps {
 
 export default function SettingsForm ({ setShowModal }: SettingsFormProps) {
   const { pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak } = useTime() as TimeContextProps
+  const [pomodoroValue, setPomodoroValue] = useState(pomodoro)
+  const [shortBreakValue, setShortBreakValue] = useState(shortBreak)
+  const [longBreakValue, setLongBreakValue] = useState(longBreak)
 
   const formArray = [
     {
       label: 'pomodoro',
-      value: pomodoro,
-      setValue: setPomodoro,
+      value: pomodoroValue,
+      setValue: setPomodoroValue,
       name: 'pomodoro',
       id: 'pomodoro'
     },
     {
       label: 'short break',
-      value: shortBreak,
-      setValue: setShortBreak,
+      value: shortBreakValue,
+      setValue: setShortBreakValue,
       name: 'shortBreak',
       id: 'shortBreak'
     },
     {
       label: 'long break',
-      value: longBreak,
-      setValue: setLongBreak,
+      value: longBreakValue,
+      setValue: setLongBreakValue,
       name: 'longBreak',
       id: 'longBreak'
     }
@@ -54,7 +58,10 @@ export default function SettingsForm ({ setShowModal }: SettingsFormProps) {
       new window.FormData(e.currentTarget).entries()
     )
 
-    console.log(pomodoro, shortBreak, longBreak)
+    setPomodoro(Number(pomodoro))
+    setShortBreak(Number(shortBreak))
+    setLongBreak(Number(longBreak))
+
     setShowModal(false)
   }
 
