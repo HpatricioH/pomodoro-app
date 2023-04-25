@@ -7,54 +7,49 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import { useRouter } from 'next/router'
 import 'react-circular-progressbar/dist/styles.css'
 
+interface PlayPauseButtonProps {
+  isPaused: boolean
+  setIsPaused: (isPaused: boolean) => void
+}
+
+function PlayPauseButton ({ isPaused, setIsPaused }: PlayPauseButtonProps) {
+  const text = isPaused ? 'play' : 'pause'
+  const left = isPaused ? '5.3rem' : '4.8rem'
+
+  return (
+    <h2 className={`absolute bottom-[3.8rem] left-[${left}] text-[#D7E0FF] uppercase font-normal text-[0.8rem] tracking-[0.5rem] cursor-pointer`} onClick={() => { setIsPaused(!isPaused) }}>{text}</h2>
+  )
+}
+
 export default function Timer () {
   const { color } = useColor() as ColorContextProps
   const { pomodoro, shortBreak, longBreak } = useTime() as TimeContextProps
   const [mode, setMode] = useState<'pomodoro' | 'shortBreak' | 'longBreak'>('pomodoro')
-  // const [status, setStatus] = useState<'stopped' | 'running' | 'paused'>('stopped')
   const [isPaused, setIsPaused] = useState(false)
-  const [timeLeft, setTimeLeft] = useState(0)
+  const [timeLeft, setTimeLeft] = useState(pomodoro * 60)
   const router = useRouter()
 
-  const secondsLeftRef = useRef(timeLeft)
-
-  const tick = () => {
-    secondsLeftRef.current = secondsLeftRef.current - 1
-    setTimeLeft(secondsLeftRef.current)
-  }
+  useEffect(() => {
+    const timeMap: any = {
+      '/': ['pomodoro', pomodoro * 60],
+      '/short-break': ['shortBreak', shortBreak * 60],
+      '/long-break': ['longBreak', longBreak * 60]
+    }
+    const [newMode, newTime] = timeMap[router.pathname] || timeMap['/']
+    setMode(newMode)
+    setTimeLeft(newTime)
+  }, [router.pathname, pomodoro, shortBreak, longBreak])
 
   useEffect(() => {
-    const initTimer = () => {
-      if (router.pathname === '/') {
-        setMode('pomodoro')
-        setTimeLeft(pomodoro * 60)
-      } else if (router.pathname === '/short-break') {
-        setMode('shortBreak')
-        setTimeLeft(shortBreak * 60)
-      } else if (router.pathname === '/long-break') {
-        setMode('longBreak')
-        setTimeLeft(longBreak * 60)
-      }
+    let timer: any
+    const tick = () => {
+      setTimeLeft(timeLeft => timeLeft - 1)
     }
-
-    const timer = setInterval(() => {
-      // if (secondsLeftRef.current > 0 && !isPaused) {
-      //   tick()
-      // } else if (secondsLeftRef.current === 0) {
-      //   clearInterval(timer)
-      //   if (mode === 'pomodoro') {
-      //     router.push('/short-break')
-      //   } else if (mode === 'shortBreak') {
-      //     router.push('/')
-      //   } else if (mode === 'longBreak') {
-      //     router.push('/')
-      //   }
-      // }
-      tick()
-    }, 1000)
-
-    initTimer()
-  }, [pomodoro, shortBreak, longBreak, router.pathname])
+    if (!isPaused && timeLeft > 0) {
+      timer = setTimeout(tick, 1000)
+    }
+    return () => { clearTimeout(timer) }
+  }, [isPaused, timeLeft])
 
   let totalSeconds = mode === 'pomodoro' ? pomodoro * 60 : shortBreak * 60
 
@@ -63,11 +58,8 @@ export default function Timer () {
   const percentage = Math.round((timeLeft / totalSeconds) * 100)
 
   const minutes = Math.floor(timeLeft / 60)
-  let seconds = timeLeft - minutes * 60
-  if (seconds < 10) {
-    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-    seconds = '0' + seconds
-  }
+  let seconds = timeLeft % 60
+  if (seconds < 10) seconds = `0${seconds}`
 
   return (
     <div className='relative w-[14rem] h-[14rem] bg-gradient-to-br shadow-2xl shadow-[#D7E0FF]/20 from-[#161932] from-20% via-[#1E213F] to-[#212840] p-[0.8rem] rounded-full'>
@@ -84,11 +76,7 @@ export default function Timer () {
           backgroundColor: '#161932'
         })}
       />
-      {
-        !isPaused
-          ? <h2 className='absolute bottom-[3.8rem] left-[4.8rem] text-[#D7E0FF] uppercase font-normal text-[0.8rem] tracking-[0.5rem]'>pause</h2>
-          : <h2 className='absolute bottom-[3.8rem] left-[5.3rem] text-[#D7E0FF] uppercase font-normal text-[0.8rem] tracking-[0.5rem]'>play</h2>
-      }
+      <PlayPauseButton isPaused={isPaused} setIsPaused={setIsPaused} />
     </div>
 
   )
