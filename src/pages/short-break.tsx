@@ -4,7 +4,7 @@ import Timer from '@/components/Timer/Timer'
 export default function ShortBreak () {
   return (
     <Layout>
-      <Timer time={5}/>
+      <Timer />
     </Layout>
   )
 }
