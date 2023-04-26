@@ -6,25 +6,30 @@ import { useState } from 'react'
 const colorArray = [
   {
     name: '#F87070',
-    className: 'bg-[#F87070]'
+    className: 'bg-[#F87070]',
+    textClass: 'hover:text-[#F87070]'
   },
   {
     name: '#70F3F8',
-    className: 'bg-[#70F3F8]'
+    className: 'bg-[#70F3F8]',
+    textClass: 'hover:text-[#70F3F8]'
   },
   {
     name: '#D881F8',
-    className: 'bg-[#D881F8]'
+    className: 'bg-[#D881F8]',
+    textClass: 'hover:text-[#D881F8]'
   }
 ]
 
 export default function Color () {
   const { color, setColor } = useColor() as ColorContextProps
+  const { setTextColor } = useColor() as ColorContextProps
   const [colorIndex, setColorIndex] = useState(colorArray.findIndex((item) => item.name === color))
 
   const handleColorClick = (index: any) => {
     setColorIndex(index)
     setColor(colorArray[index].name)
+    setTextColor(colorArray[index].textClass)
   }
 
   return (
