@@ -12,7 +12,7 @@ export interface TimerProps {
 }
 
 export function useTimer () {
-  const { pomodoro, shortBreak, longBreak } = useTime() as TimeContextProps
+  const { pomodoro, shortBreak, longBreak, counter, setCounter } = useTime() as TimeContextProps
   const [mode, setMode] = useState<'pomodoro' | 'shortBreak' | 'longBreak'>('pomodoro')
   const [isPaused, setIsPaused] = useState(true)
   const [timeLeft, setTimeLeft] = useState(pomodoro * 60)
@@ -39,9 +39,26 @@ export function useTimer () {
     }
     if (!isPaused && timeLeft > 0) {
       timer = setTimeout(tick, 1000)
+    } else if (timeLeft === 0) {
+      // play sound
+      const audio = new Audio('/sounds/done.mp3')
+      audio.play()
+      // switch mode
+      if (mode === 'pomodoro' && counter < 3) {
+        router.push('/short-break')
+      } else if (mode === 'shortBreak' && counter < 3) {
+        router.push('/')
+        setCounter(counter + 1)
+      } else if (mode === 'pomodoro' && counter === 3) {
+        router.push('/long-break')
+      } else if (mode === 'longBreak') {
+        router.push('/')
+        setCounter(0)
+      }
     }
+
     return () => { clearTimeout(timer) }
-  }, [isPaused, timeLeft])
+  }, [isPaused, timeLeft, mode, router])
 
   let totalSeconds = mode === 'pomodoro' ? pomodoro * 60 : shortBreak * 60
 

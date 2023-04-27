@@ -7,6 +7,8 @@ export interface TimeContextProps {
   setShortBreak: (shortBreak: number) => void
   longBreak: number
   setLongBreak: (longBreak: number) => void
+  counter: number
+  setCounter: (counter: number) => void
 }
 
 interface Props {
@@ -19,6 +21,7 @@ export const TimeProvider = ({ children }: Props) => {
   const [pomodoro, setPomodoro] = useState(25)
   const [shortBreak, setShortBreak] = useState(5)
   const [longBreak, setLongBreak] = useState(15)
+  const [counter, setCounter] = useState(0)
 
   const value = {
     pomodoro,
@@ -26,7 +29,9 @@ export const TimeProvider = ({ children }: Props) => {
     shortBreak,
     setShortBreak,
     longBreak,
-    setLongBreak
+    setLongBreak,
+    counter,
+    setCounter
   }
 
   return (

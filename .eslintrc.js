@@ -19,6 +19,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
+    '@typescript-eslint/no-floating-promises': 'off',
     'import/no-restricted-paths': [
       'error',
       {
