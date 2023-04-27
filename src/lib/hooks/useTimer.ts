@@ -67,10 +67,10 @@ export function useTimer () {
 
   const percentage = Math.round((timeLeft / totalSeconds) * 100)
 
-  let minutes = Math.floor(timeLeft / 60)
-  if (minutes < 10) minutes = `0${minutes}`
-  let seconds = timeLeft % 60
-  if (seconds < 10) seconds = `0${seconds}`
+  let minutes: string = Math.floor(timeLeft / 60).toString()
+  if (minutes.length === 1) minutes = `0${minutes}`
+  let seconds: string = (timeLeft % 60).toString()
+  if (seconds.length === 1) seconds = `0${seconds}`
 
   return { minutes, seconds, percentage, isPaused, setIsPaused }
 }
