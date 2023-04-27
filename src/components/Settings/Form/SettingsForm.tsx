@@ -67,18 +67,18 @@ export default function SettingsForm ({ setShowModal }: SettingsFormProps) {
 
   return (
     <form className='border-b flex flex-col justify-center items-center' onSubmit={handleSubmit}>
-      <div className='flex flex-col justify-between w-full mb-[0.5rem]'>
+      <div className='flex flex-col justify-between w-full mb-[0.5rem] md:flex-row'>
         {
           formArray.map((item, index) => {
             return (
-              <div key={index} className='relative flex justify-between py-1'>
-                <label className='text-[#979797] opacity-[.67] font-bold' >{item.label}</label>
-                <div className='relative'>
+              <div key={index} className='relative flex justify-between py-1 md:flex-col'>
+                <label className='text-[#979797] opacity-[.67] font-semibold md:pb-[0.5rem]' >{item.label}</label>
+                <div className='relative mb-3'>
                   <input
                     type="number"
                     name={item.name}
                     id={item.id}
-                    className='h-8 rounded-md border bg-[#EFF1FA] pl-2 text-[#1E213F] font-bold w-[6rem]'
+                    className='h-8 rounded-md border bg-[#EFF1FA] pl-2 text-[#1E213F] font-bold w-[6rem] md:h-10 md:w-[7.5rem]'
                     value={item.value}
                     onChange={(e) => { handleChange(e, item.setValue as any) }} />
                   <Image

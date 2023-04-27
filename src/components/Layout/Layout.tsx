@@ -14,7 +14,7 @@ export default function Layout ({ children, ...props }: Props) {
   return (
     <>
       <Header />
-        <main className={`p-4 flex flex-col justify-center items-center ${font}`}>{children}</main>
+        <main className={`py-12 flex flex-col justify-center items-center ${font}`}>{children}</main>
       <Footer />
     </>
   )

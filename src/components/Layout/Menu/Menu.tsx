@@ -27,7 +27,7 @@ export default function Menu () {
 
   // TODO: make the nav a <ul> and the links <li> elements.
   return (
-    <nav className={`bg-[#161932] h-[4rem] w-[19rem] flex justify-between items-center rounded-[5rem] px-[1rem] ${font}`}>
+    <nav className={`bg-[#161932] h-[4rem] w-[19rem] flex justify-between items-center rounded-[5rem] px-[1rem] ${font} md:w-[22rem]`}>
       {
         menuArray.map((link, index) => {
           return (
@@ -38,7 +38,7 @@ export default function Menu () {
                 router.pathname === link.path
                   ? `${color === ''
                     ? 'bg-[#F87070]'
-                    : `bg-[${color}]`} h-[3rem] flex justify-center items-center rounded-[4rem] w-[6rem] text-[#161932] font-bold`
+                    : `bg-[${color}]`} h-[3rem] flex justify-center items-center rounded-[4rem] w-[6rem] text-[#161932] font-bold md:h-[3.2rem] md:w-[7rem]`
                   : 'text-[#D7E0FF] font-bold'}>
               <p className='text-xs'>{link.name}</p>
             </Link>

@@ -27,9 +27,9 @@ export default function Font () {
   }
 
   return (
-    <div className='py-[1rem] border-b'>
-      <h2 className='font-semibold text-center uppercase text-[0.8rem] tracking-[0.2rem] pb-[1rem]'>font</h2>
-      <div className='flex justify-center gap-[1rem] w-full mb-[0.5rem]'>
+    <div className='py-[1rem] border-b flex flex-col md:flex-row md:py-[1.5rem]'>
+      <h2 className='font-semibold text-center uppercase text-[0.8rem] tracking-[0.2rem] pb-[1rem] md:text-[0.9rem] md:text-left md:self-center'>font</h2>
+      <div className='flex justify-center gap-[1rem] w-full mb-[0.5rem] md:justify-end'>
         {fontArray.map((fontItems, index) => {
           return (
             <div key={index} className='flex items-center '>
