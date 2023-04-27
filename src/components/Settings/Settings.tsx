@@ -9,21 +9,21 @@ interface SettingsProps {
 
 export default function Settings ({ setShowModal }: SettingsProps) {
   return (
-    <div className="mt-10 flex justify-center items-center flex-col w-72 rounded-lg shadow-xl h-auto py-2 bg-white absolute">
-      <div className='flex justify-between items-baseline w-full p-4 border-b'>
-        <p className='font-bold'>Settings</p>
+    <div className="top-[5.5rem] flex justify-center items-center flex-col w-72 rounded-lg shadow-xl h-auto py-2 bg-white absolute md:top-[12rem] md:w-[29rem] md:rounded-3xl">
+      <div className='flex justify-between items-baseline w-full p-4 border-b md:p-6'>
+        <p className='font-bold md:text-xl'>Settings</p>
         <Image
           src='/images/icon-close.svg'
           alt='close icon'
-          className='decoration-[#EFF1FA]'
+          className='decoration-[#EFF1FA] cursor-pointer'
           width={15}
           height={15}
           priority
           onClick={() => { setShowModal(false) }}
         />
       </div>
-      <div className='flex flex-col p-4 w-full'>
-        <h2 className='font-semibold text-center uppercase text-[0.8rem] tracking-[0.2rem] pb-[1rem]'>time ( minutes )</h2>
+      <div className='flex flex-col p-4 w-full md:p-6'>
+        <h2 className='font-semibold text-center uppercase text-[0.8rem] tracking-[0.2rem] pb-[0.5rem] md:text-left md:text-[0.9rem]'>time ( minutes )</h2>
         <SettingsForm setShowModal={setShowModal}/>
         {/* TODO: this Font, Color, and button should be moved to the SettingsForm and change buttons to inputs thus when the apply button is clicked everything should be sent */}
         <Font/>

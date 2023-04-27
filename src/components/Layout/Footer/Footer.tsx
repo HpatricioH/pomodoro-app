@@ -10,7 +10,7 @@ export default function Footer () {
   }
 
   return (
-    <footer className='flex justify-center items-center mt-[3.5rem]'>
+    <footer className='flex justify-center items-center mt-[7rem]'>
       <Image
         src="/images/icon-settings.svg"
         alt="settings icon"

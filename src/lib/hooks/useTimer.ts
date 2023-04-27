@@ -58,6 +58,7 @@ export function useTimer () {
     }
 
     return () => { clearTimeout(timer) }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPaused, timeLeft, mode, router])
 
   let totalSeconds = mode === 'pomodoro' ? pomodoro * 60 : shortBreak * 60
