@@ -20,10 +20,6 @@ const APP_MODE = Object.freeze({
   LONG_BREAK: 'longBreak'
 })
 
-// const POMODORO_MODE = 'pomodoro'
-// const SHORT_MODE = 'shortBreak'
-// const LONG_MODE = 'longBreak'
-
 export function useTimer () {
   const { pomodoro, shortBreak, longBreak, counter, setCounter } = useTime() as TimeContextProps
   const [mode, setMode] = useState<Mode>(APP_MODE.POMODORO)
