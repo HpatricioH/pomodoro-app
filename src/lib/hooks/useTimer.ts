@@ -11,14 +11,22 @@ export interface TimerProps {
   setIsPaused: (isPaused: boolean) => void
 }
 
+type Mode = typeof APP_MODE[keyof typeof APP_MODE]
+
 // ENUM for timer modes
-const POMODORO_MODE = 'pomodoro'
-const SHORT_MODE = 'shortBreak'
-const LONG_MODE = 'longBreak'
+const APP_MODE = Object.freeze({
+  POMODORO: 'pomodoro',
+  SHORT_BREAK: 'shortBreak',
+  LONG_BREAK: 'longBreak'
+})
+
+// const POMODORO_MODE = 'pomodoro'
+// const SHORT_MODE = 'shortBreak'
+// const LONG_MODE = 'longBreak'
 
 export function useTimer () {
   const { pomodoro, shortBreak, longBreak, counter, setCounter } = useTime() as TimeContextProps
-  const [mode, setMode] = useState(POMODORO_MODE)
+  const [mode, setMode] = useState<Mode>(APP_MODE.POMODORO)
   const [isPaused, setIsPaused] = useState(true)
   const [timeLeft, setTimeLeft] = useState(pomodoro * 60)
   const router = useRouter()
@@ -26,9 +34,9 @@ export function useTimer () {
   // set up time left for each mode based on the current route
   useEffect(() => {
     const timeMap: any = {
-      '/': [POMODORO_MODE, pomodoro * 60],
-      '/short-break': [SHORT_MODE, shortBreak * 60],
-      '/long-break': [LONG_MODE, longBreak * 60]
+      '/': [APP_MODE.POMODORO, pomodoro * 60],
+      '/short-break': [APP_MODE.SHORT_BREAK, shortBreak * 60],
+      '/long-break': [APP_MODE.LONG_BREAK, longBreak * 60]
     }
 
     const [newMode, newTime] = timeMap[router.pathname] || timeMap['/']
@@ -51,14 +59,14 @@ export function useTimer () {
       audio.play()
 
       // switch mode
-      if (mode === POMODORO_MODE && counter < 3) {
+      if (mode === APP_MODE.POMODORO && counter < 3) {
         router.push('/short-break')
-      } else if (mode === SHORT_MODE && counter < 3) {
+      } else if (mode === APP_MODE.SHORT_BREAK && counter < 3) {
         router.push('/')
         setCounter(counter + 1)
-      } else if (mode === POMODORO_MODE && counter === 3) {
+      } else if (mode === APP_MODE.POMODORO && counter === 3) {
         router.push('/long-break')
-      } else if (mode === LONG_MODE) {
+      } else if (mode === APP_MODE.LONG_BREAK) {
         router.push('/')
         setCounter(0)
       }
@@ -69,9 +77,9 @@ export function useTimer () {
   }, [isPaused, timeLeft, mode, router])
 
   // calculate percentage of time left
-  let totalSeconds = mode === POMODORO_MODE ? pomodoro * 60 : shortBreak * 60
+  let totalSeconds = mode === APP_MODE.POMODORO ? pomodoro * 60 : shortBreak * 60
 
-  if (mode === LONG_MODE) totalSeconds = longBreak * 60
+  if (mode === APP_MODE.LONG_BREAK) totalSeconds = longBreak * 60
 
   const percentage = Math.round((timeLeft / totalSeconds) * 100)
 
