@@ -10,11 +10,11 @@ export default function Footer () {
   }
 
   return (
-    <footer className='flex justify-center items-center mt-[7rem]'>
+    <footer className='flex justify-center items-center mt-[5rem]'>
       <Image
         src="/images/icon-settings.svg"
         alt="settings icon"
-        className='decoration-[#EFF1FA]'
+        className='decoration-[#EFF1FA] cursor-pointer'
         width={20}
         height={24}
         priority
