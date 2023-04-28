@@ -30,8 +30,8 @@ Users should be able to:
 
 ### Screenshots
 
-![App Screenshot](./screenshotOne.jpg)
-![App Settings](./screenshotTwo.jpg)
+![App Screenshot](/ScreenshotOne.jpg)
+![App Settings](/screenshotTwo.jpg)
 
 <br/>
 
