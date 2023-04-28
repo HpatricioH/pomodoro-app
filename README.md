@@ -90,7 +90,7 @@ export default function Timer () {
 ## Author
 
 - Github - [Patricio Huerta](https://github.com/HpatricioH)
-- LinkedIn - [PatricioHuerta](www.linkedin.com/in/patricio-huerta)
+- LinkedIn - [PatricioHuerta](https://www.linkedin.com/in/patricio-huerta)
 
 
 
