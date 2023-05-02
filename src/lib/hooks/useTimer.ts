@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import useTime from './useTime'
 import { type TimeContextProps } from '../context/TimeContext'
 
@@ -26,6 +26,7 @@ export function useTimer () {
   const [isPaused, setIsPaused] = useState(true)
   const [timeLeft, setTimeLeft] = useState(pomodoro * 60)
   const router = useRouter()
+  const timerRef = useRef<NodeJS.Timeout>()
 
   // set up time left for each mode based on the current route
   useEffect(() => {
@@ -43,32 +44,38 @@ export function useTimer () {
 
   // set up timer based on the time left and the mode
   useEffect(() => {
-    let timer: any
-    const tick = () => {
-      setTimeLeft(timeLeft => timeLeft - 1)
-    }
     if (!isPaused && timeLeft > 0) {
-      timer = setTimeout(tick, 1000)
+      timerRef.current = setInterval(() => {
+        setTimeLeft(timeLeft => timeLeft - 1)
+      }, 1000)
     } else if (timeLeft === 0) {
       // play sound
       const audio = new Audio('/sounds/done.mp3')
       audio.play()
 
       // switch mode
-      if (mode === APP_MODE.POMODORO && counter < 3) {
-        router.push('/short-break')
-      } else if (mode === APP_MODE.SHORT_BREAK && counter < 3) {
-        router.push('/')
-        setCounter(counter + 1)
-      } else if (mode === APP_MODE.POMODORO && counter === 3) {
-        router.push('/long-break')
-      } else if (mode === APP_MODE.LONG_BREAK) {
-        router.push('/')
-        setCounter(0)
+      switch (mode) {
+        case APP_MODE.POMODORO:
+          if (counter < 3) {
+            router.push('/short-break')
+          } else {
+            router.push('/long-break')
+          }
+          break
+        case APP_MODE.SHORT_BREAK:
+          router.push('/')
+          setCounter(counter + 1)
+          break
+        case APP_MODE.LONG_BREAK:
+          router.push('/')
+          setCounter(0)
+          break
       }
     }
 
-    return () => { clearTimeout(timer) }
+    return () => {
+      clearInterval(timerRef.current)
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPaused, timeLeft, mode, router])
 
