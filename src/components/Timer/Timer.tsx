@@ -4,16 +4,21 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 import { PlayPauseButton } from './PlayPauseButton/PlayPauseButton'
 import { type TimerProps, useTimer } from '@/lib/hooks/useTimer'
+import { useMemo } from 'react'
 
 export default function Timer () {
   const { color } = useColor() as ColorContextProps
   const { minutes, percentage, seconds, isPaused, setIsPaused } = useTimer() as TimerProps
 
+  const formattedTime = useMemo(() =>
+    `${minutes}:${seconds}`,
+  [minutes, seconds])
+
   return (
     <div className='relative w-[14rem] h-[14rem] bg-gradient-to-br shadow-2xl shadow-[#D7E0FF]/20 from-[#161932] from-20% via-[#1E213F] to-[#212840] p-[0.8rem] rounded-full md:w-[18rem] md:h-[18rem]'>
       <CircularProgressbar
         value={percentage }
-        text={`${minutes}:${seconds}`}
+        text={`${formattedTime}`}
         background={true}
         backgroundPadding={5}
         strokeWidth={4}

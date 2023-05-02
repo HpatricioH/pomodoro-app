@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@types/node": "18.15.11",
@@ -19,6 +20,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.33.0",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.37.0",
